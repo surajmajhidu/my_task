@@ -1,0 +1,34 @@
+name: daily_task_x
+description: A new Flutter project for DailyTaskX.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0' # Adjusted to a common modern Flutter SDK range
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  firebase_core: ^2.27.0 # Use latest compatible versions
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.15.8
+  google_sign_in: ^6.2.1
+  device_info_plus: ^9.1.2
+  http: ^1.2.1
+  lottie: ^3.1.0
+  shared_preferences: ^2.2.2
+  flutter_dotenv: ^5.1.0 # For API keys
+  google_mobile_ads: ^6.0.0 # Added AdMob dependency
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
