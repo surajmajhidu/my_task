@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - EarnBlitz</title>
+    <link rel="stylesheet" href="style.css"> <!-- Assuming shared style for now -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="form-container admin-login-container">
+        <div class="form-box admin-login-box">
+            <h2><i class="fas fa-user-shield"></i> Admin Panel Login</h2>
+            <form id="adminLoginForm">
+                <div class="input-group">
+                    <label for="adminUsername"><i class="fas fa-user icon"></i> Username/Email</label>
+                    <input type="text" id="adminUsername" name="adminUsername" required>
+                    <div class="error-message" id="adminUsernameError"></div>
+                </div>
+                <div class="input-group">
+                    <label for="adminPassword"><i class="fas fa-lock icon"></i> Password</label>
+                    <input type="password" id="adminPassword" name="adminPassword" required>
+                    <div class="error-message" id="adminPasswordError"></div>
+                </div>
+                <button type="submit" class="btn btn-submit admin-login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- Assuming shared script for now -->
+</body>
+</html>

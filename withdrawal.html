@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal - EarnBlitz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">EarnBlitz</div>
+        <div class="navbar-links">
+            <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+
+    <div class="form-container withdrawal-container">
+        <div class="form-box withdrawal-box">
+            <h2>Request Withdrawal</h2>
+            <form id="withdrawalForm">
+                <div class="input-group">
+                    <label for="upiId"><i class="fas fa-mobile-alt icon"></i> UPI ID</label>
+                    <input type="text" id="upiId" name="upiId" placeholder="yourname@upi" required>
+                    <div class="error-message" id="upiIdError"></div>
+                </div>
+                <div class="input-group">
+                    <label for="withdrawalAmount"><i class="fas fa-rupee-sign icon"></i> Withdrawal Amount</label>
+                    <input type="number" id="withdrawalAmount" name="withdrawalAmount" placeholder="Enter amount" required min="50"> <!-- Example: Minimum withdrawal amount -->
+                    <div class="error-message" id="withdrawalAmountError"></div>
+                </div>
+                <div class="info-message">
+                    <p>Minimum withdrawal amount: 50 points/rupees.</p>
+                    <p>Ensure your UPI ID is correct to avoid payment issues.</p>
+                </div>
+                <button type="submit" class="btn btn-submit btn-withdraw-submit">Submit Request</button>
+            </form>
+        </div>
+        <div class="footer-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="help.html">Help</a>
+        </div>
+    </div>
+
+    <footer class="dashboard-footer">
+        <p>&copy; 2024 EarnBlitz. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

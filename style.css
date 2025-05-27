@@ -1,0 +1,1011 @@
+/*
+    EarnBlitz Stylesheet
+    --------------------
+    Main Table of Contents:
+    1. Global Styles & Font Import
+    2. General Element Styling (Links, Buttons)
+    3. Hero Section (index.html)
+    4. Form Styling (Login, Register, Withdrawal)
+    5. Navigation Bar (Dashboard, Ad Watch, etc.)
+    6. Dashboard Specific Styles
+    7. Ad Watch Page Specific Styles
+    8. Withdrawal Page Specific Styles
+    9. Modal Styling (VPN Warning)
+    10. Admin Panel General Styles
+    11. Admin Login Page
+    12. Admin Dashboard Layout (Sidebar, Main Content)
+    13. Admin Components (Tables, Forms, Action Buttons)
+    14. Utility Classes
+    15. Responsive Adjustments (Grouped by component or page where applicable)
+*/
+
+/* 1. Global Styles & Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Modern, bold font */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9; /* Softer light grey background for user pages */
+    color: #333; /* Default text color */
+    line-height: 1.6; /* Default line height */
+}
+
+/* Ensure admin body has its own specific background if different */
+.admin-body {
+    background-color: #e9ecef; /* Light grey background for admin area */
+}
+
+/* 2. General Element Styling */
+a {
+    color: #0052D4; /* Primary blue for links */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover {
+    color: #004080; /* Darker blue on hover */
+    text-decoration: underline;
+}
+
+/* General Button Styling */
+.btn {
+    padding: 14px 28px; /* Slightly adjusted padding */
+    margin: 5px; /* Default margin for spacing */
+    border: none;
+    border-radius: 8px; /* Slightly more rounded */
+    font-size: 1em;
+    font-weight: 700; /* Montserrat bold */
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-in-out;
+    text-transform: uppercase; /* Uppercase button text */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+    display: inline-block; /* Ensure proper spacing and sizing */
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.20); /* Enhanced hover shadow */
+}
+.btn:active {
+    transform: translateY(-1px); /* Slight press effect */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* 3. Hero Section (index.html) */
+.hero {
+    background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC); /* Gradient blues */
+    color: white;
+    padding: 80px 20px; /* Increased padding */
+    text-align: center;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.hero-content h1 {
+    font-size: 3.2em; /* Slightly larger */
+    font-weight: 700; /* Montserrat bold */
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.35); /* Slightly enhanced shadow */
+}
+.hero-content p {
+    font-size: 1.25em; /* Slightly larger */
+    margin-bottom: 35px;
+    max-width: 650px; /* Slightly wider */
+    line-height: 1.7; /* Improved line height */
+}
+.cta-buttons .btn { /* Specific to hero buttons if needed, inherits from .btn */
+    margin: 10px;
+}
+.btn-register { /* Extends .btn */
+    background-color: #00FF00; /* Neon green */
+    color: #222; /* Darker text for better contrast on neon green */
+}
+.btn-register:hover {
+     background-color: #00e000; /* Slightly darker neon green */
+}
+.btn-login { /* Extends .btn */
+    background-color: #FFFF00; /* Energetic yellow */
+    color: #222; /* Darker text for better contrast on yellow */
+}
+.btn-login:hover {
+    background-color: #e6e600; /* Darker yellow */
+}
+
+/* 4. Form Styling (Login, Register, Withdrawal) */
+.form-container {
+    background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.form-box {
+    background-color: white;
+    padding: 35px 45px; /* Increased padding */
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12); /* Enhanced shadow */
+    width: 100%;
+    max-width: 480px; /* Slightly wider */
+    text-align: center;
+}
+.form-box h2 {
+    color: #333;
+    font-size: 2.2em; /* Larger */
+    font-weight: 700; /* Montserrat Bold */
+    margin-bottom: 35px;
+}
+.input-group {
+    margin-bottom: 22px; /* Increased margin */
+    text-align: left;
+    position: relative;
+}
+.input-group label {
+    display: block;
+    margin-bottom: 10px; /* Increased margin */
+    font-weight: 700; /* Montserrat Bold */
+    color: #444; /* Slightly darker label */
+    font-size: 0.95em;
+}
+.input-group .icon {
+    position: absolute;
+    left: 18px; /* Adjusted position */
+    top: calc(50% + 10px); /* Adjusted for label height + input padding */
+    transform: translateY(-50%);
+    color: #999; /* Lighter icon color */
+    font-size: 1.2em;
+    z-index: 2; /* Ensure icon is above input field background */
+}
+.input-group input {
+    width: 100%;
+    padding: 14px 14px 14px 50px; /* Adjusted padding for icon */
+    border: 1px solid #ccc; /* Lighter border */
+    border-radius: 8px; /* More rounded */
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif; /* Ensure font consistency */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-group input:focus {
+    border-color: #0052D4;
+    outline: none;
+    box-shadow: 0 0 0 0.25rem rgba(0, 82, 212, 0.25); /* Consistent focus shadow */
+}
+.error-message {
+    color: #e74c3c; /* Softer red */
+    font-size: 0.85em;
+    margin-top: 6px;
+    min-height: 1.2em; /* Adjusted height */
+    text-align: left;
+    font-weight: 700; /* Montserrat Bold for errors */
+}
+.btn-submit { /* This class is used on Register and Login forms, extends .btn */
+    background-color: #00FF00; /* Neon green */
+    color: #222; /* Darker text for better contrast */
+    width: 100%; /* Full width for form submit */
+    margin-top: 15px; /* Space above submit button */
+    font-size: 1.1em; /* Slightly larger than default .btn */
+}
+.btn-submit:hover {
+    background-color: #00e000; /* Darker neon green */
+}
+.form-links {
+    margin-top: 25px; /* Increased margin */
+    font-size: 0.95em;
+}
+.form-links a {
+    color: #0052D4;
+    font-weight: 700; /* Montserrat Bold for links */
+}
+.footer-links { /* Links below the form box, on the gradient background */
+    margin-top: 35px;
+    text-align: center;
+}
+.footer-links a {
+    color: white;
+    margin: 0 12px; /* Increased margin */
+    font-size: 0.95em;
+    font-weight: 700; /* Montserrat Bold */
+}
+
+/* 5. Navigation Bar (Dashboard, Ad Watch, etc.) */
+.navbar {
+    background-color: #004080; /* Dark blue for navbar */
+    padding: 18px 35px; /* Increased padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15); /* Enhanced shadow */
+}
+.navbar-brand {
+    font-size: 2em; /* Larger brand */
+    font-weight: 700; /* Montserrat Bold */
+}
+.navbar-links a {
+    color: white;
+    margin-left: 25px; /* Increased margin */
+    font-size: 1.05em; /* Slightly larger */
+    padding: 10px 15px; /* Increased padding */
+    border-radius: 8px; /* More rounded */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    font-weight: 700; /* Montserrat Bold */
+}
+.navbar-links a .fas {
+    margin-right: 8px; /* Space between icon and text */
+}
+.navbar-links a:hover, .navbar-links a.active {
+    background-color: #0052D4; /* Primary blue for hover/active */
+    color: #fff; /* Ensure text is white on active */
+}
+.navbar-links .logout-btn { /* Extends .navbar-links a */
+    background-color: #e74c3c; /* Softer red */
+}
+.navbar-links .logout-btn:hover {
+    background-color: #c0392b; /* Darker softer red */
+}
+
+/* 6. Dashboard Specific Styles */
+.dashboard-container { /* Also base for Ad Watch, Withdrawal content areas */
+    padding: 35px; /* Increased padding */
+    min-height: calc(100vh - 130px); /* Adjusted for potentially taller navbar/footer */
+}
+.dashboard-header { /* Shared with Ad Watch */
+    text-align: center;
+    margin-bottom: 45px; /* Increased margin */
+}
+.dashboard-header h1 {
+    font-size: 2.8em; /* Larger */
+    font-weight: 700; /* Montserrat Bold */
+    color: #2c3e50; /* Dark blue-grey text */
+}
+.dashboard-section {
+    background-color: white;
+    padding: 30px; /* Increased padding */
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.09); /* Enhanced shadow */
+    margin-bottom: 35px; /* Increased margin */
+}
+.dashboard-section h2 {
+    font-size: 2em; /* Larger */
+    font-weight: 700; /* Montserrat Bold */
+    color: #0052D4;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px; /* Add padding for border */
+    border-bottom: 2px solid #eee; /* Subtle border */
+}
+.dashboard-section h2 .fas {
+    margin-right: 12px;
+    font-size: 1.1em; /* Adjusted icon size */
+}
+/* Tasks Section */
+.task-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly larger minmax */
+    gap: 25px; /* Increased gap */
+}
+.task-item {
+    background-color: #fdfdfd; /* Slightly off-white */
+    border: 1px solid #e7e7e7; /* Softer border */
+    border-radius: 10px; /* More rounded */
+    padding: 25px; /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.task-item:hover {
+    transform: translateY(-6px); /* Increased lift */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12); /* Enhanced shadow */
+}
+.task-thumbnail {
+    margin-bottom: 18px; /* Increased margin */
+    color: #0052D4;
+}
+.task-thumbnail .fas.fa-video { /* Specific for video icon */
+    font-size: 3.5em; /* Larger video icon */
+}
+.task-thumbnail img {
+    max-width: 120px; /* Larger image */
+    height: auto;
+    border-radius: 8px; /* More rounded */
+}
+.task-info h3 {
+    font-size: 1.4em; /* Larger */
+    font-weight: 700; /* Montserrat Bold */
+    color: #333;
+    margin-bottom: 10px;
+}
+.task-info p {
+    font-size: 1em; /* Larger */
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 18px; /* Increased margin */
+}
+.btn-watch { /* Extends .btn */
+    background-color: #00FF00; /* Neon green */
+    color: #222; /* Darker text */
+    padding: 12px 25px; /* Adjusted padding */
+    width: 90%; /* Wider button */
+    max-width: 220px;
+    margin-top: auto; /* Push button to bottom of flex item */
+}
+.btn-watch:hover {
+    background-color: #00e000; /* Darker neon green */
+}
+/* Wallet Section */
+.wallet-section .wallet-info {
+    text-align: center;
+    padding: 25px; /* Increased padding */
+    background-color: #eaf6ff; /* Lighter blue */
+    border-radius: 10px; /* More rounded */
+}
+.wallet-info p {
+    font-size: 1.25em; /* Larger */
+    color: #333;
+    margin-bottom: 22px; /* Increased margin */
+}
+.points-display {
+    font-weight: 700; /* Montserrat Bold */
+    font-size: 1.8em; /* Larger */
+    color: #0052D4;
+}
+.btn-withdraw { /* Extends .btn */
+    background-color: #FFFF00; /* Energetic yellow */
+    color: #222; /* Darker text */
+    padding: 12px 28px; /* Adjusted padding */
+}
+.btn-withdraw:hover {
+    background-color: #e6e600; /* Darker yellow */
+}
+/* Dashboard Footer - Shared with Ad Watch, etc. */
+.dashboard-footer { /* This is the small footer with Terms, Privacy, Help */
+    text-align: center;
+    padding: 25px; /* Increased padding */
+    background-color: #004080; /* Consistent with navbar */
+    color: white;
+}
+.dashboard-footer p { /* For copyright text if added */
+    margin: 0;
+    font-size: 0.9em;
+}
+.dashboard-footer a {
+    color: white;
+    margin: 0 12px; /* Increased margin */
+    font-size: 0.95em;
+    font-weight: 700; /* Montserrat Bold */
+}
+
+/* 7. Ad Watch Page Specific Styles */
+.ad-watch-container { /* Uses .dashboard-container base */
+}
+.ad-watch-header h1 { /* Uses .dashboard-header h1 base */
+    color: #2c3e50;
+}
+.video-section {
+    width: 100%;
+    max-width: 720px; /* Slightly larger max-width */
+    margin-bottom: 25px; /* Increased margin */
+}
+.video-placeholder {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: #111; /* Darker placeholder */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px; /* More rounded */
+    position: relative;
+    cursor: pointer; /* Indicate it's clickable */
+    transition: background-color 0.3s ease;
+}
+.video-placeholder:hover {
+    background-color: #222; /* Slightly lighter on hover */
+}
+.video-placeholder .fa-play-circle {
+    font-size: 6em; /* Larger */
+    color: rgba(255, 255, 255, 0.8); /* Brighter icon */
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+.video-placeholder:hover .fa-play-circle {
+    transform: scale(1.1); /* Scale icon on hover */
+}
+.video-placeholder p {
+    font-size: 1.3em; /* Larger */
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 700; /* Montserrat Bold */
+}
+.timer-section {
+    text-align: center;
+    margin-bottom: 35px; /* Increased margin */
+    width: 100%;
+    max-width: 720px;
+}
+.timer-message {
+    font-size: 1.2em; /* Larger */
+    color: #333;
+    margin-bottom: 18px; /* Increased margin */
+    line-height: 1.6;
+}
+#countdown-timer {
+    font-weight: 700; /* Montserrat Bold */
+    color: #0052D4;
+    font-size: 1.2em; /* Match timer message */
+}
+.timer-visual {
+    width: 100%;
+    margin-top: 12px; /* Increased margin */
+}
+.timer-bar-background {
+    width: 100%;
+    background-color: #dde2e7; /* Softer grey */
+    border-radius: 30px; /* More rounded */
+    height: 24px; /* Taller bar */
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); /* Inner shadow */
+}
+.timer-bar-progress {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #00FF00, #00d000); /* Refined gradient */
+    border-radius: 30px;
+    transition: width 0.5s linear; /* Smooth transition */
+}
+.claim-section {
+    text-align: center;
+    width: 100%;
+    max-width: 720px;
+}
+.btn-claim { /* Extends .btn */
+    background-color: #00FF00; /* Neon green */
+    color: #222; /* Darker text */
+    padding: 16px 45px; /* Larger padding */
+    font-size: 1.3em; /* Larger font */
+}
+.btn-claim:disabled {
+    background-color: #b0b0b0; /* Darker grey for disabled */
+    color: #777; /* Lighter text for disabled */
+    cursor: not-allowed;
+    opacity: 0.6; /* Slightly less opaque */
+    box-shadow: none;
+    transform: translateY(0);
+}
+.btn-claim:not(:disabled):hover {
+    background-color: #00e000; /* Darker neon green */
+}
+
+/* 8. Withdrawal Page Specific Styles */
+.withdrawal-container.form-container { /* Uses .form-container base */
+    /* Override background if it shouldn't be gradient, e.g., use .dashboard-container's bg */
+     background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC); /* Keeping gradient for now */
+}
+.withdrawal-container .form-box { /* Extends .form-box */
+    max-width: 520px; /* Slightly wider */
+}
+.info-message {
+    background-color: #eaf6ff; /* Lighter blue background */
+    padding: 18px; /* Increased padding */
+    border-radius: 8px; /* More rounded */
+    margin-bottom: 25px; /* Increased margin */
+    font-size: 0.95em; /* Slightly larger */
+    color: #2c3e50; /* Dark blue-grey text */
+    text-align: left;
+    line-height: 1.6;
+    border-left: 4px solid #0052D4; /* Accent border */
+}
+.info-message p {
+    margin: 8px 0; /* Increased margin */
+}
+.btn-withdraw-submit { /* Extends .btn-submit, but with yellow color */
+    background-color: #FFFF00; /* Energetic yellow */
+    color: #222; /* Darker text */
+}
+.btn-withdraw-submit:hover {
+    background-color: #e6e600; /* Darker yellow */
+}
+
+/* 9. Modal Styling (VPN Warning) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Slightly darker overlay */
+    display: flex; /* Used by JS to show/hide, then JS sets to flex for active */
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Higher z-index */
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0; /* Start hidden for transition */
+    visibility: hidden; /* Start hidden for transition */
+    transition: opacity 0.25s ease-out, visibility 0.25s ease-out; /* Faster transition */
+}
+.modal-overlay.active { /* Class added by JS to show modal */
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content { /* Base for all modals */
+    background-color: white;
+    padding: 35px; /* Increased padding */
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Enhanced shadow */
+    text-align: center;
+    width: 100%;
+    max-width: 480px; /* Slightly wider */
+    position: relative;
+    transform: translateY(-20px) scale(0.95); /* Start slightly up and smaller */
+    transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+    opacity: 0; /* Start transparent for transition */
+}
+.modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1); /* Animate to final position */
+    opacity: 1; /* Fade in */
+}
+.modal-close-btn {
+    position: absolute;
+    top: 18px; /* Adjusted position */
+    right: 18px;
+    font-size: 2em; /* Larger */
+    color: #777; /* Softer color */
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.modal-close-btn:hover {
+    color: #333; /* Darker on hover */
+    transform: rotate(90deg); /* Rotate on hover */
+}
+.vpn-modal-content { /* Specific to VPN modal */
+    background-color: #D32F2F; /* Red background */
+    color: white;
+}
+.vpn-modal-content .modal-close-btn { /* Custom close for VPN modal */
+    color: #f0f0f0;
+}
+.vpn-modal-content .modal-close-btn:hover {
+    color: white;
+}
+.vpn-modal-content .modal-icon {
+    margin-bottom: 22px; /* Increased margin */
+}
+.vpn-modal-content .modal-icon .fas {
+    color: #FFFF00; /* Energetic yellow */
+    font-size: 3.5em; /* Larger */
+}
+.vpn-modal-content h2 {
+    font-size: 2.2em; /* Larger */
+    font-weight: 700; /* Montserrat Bold */
+    margin-bottom: 18px; /* Increased margin */
+}
+.vpn-modal-content p {
+    font-size: 1.15em; /* Larger */
+    line-height: 1.65; /* Improved line height */
+    margin-bottom: 28px; /* Increased margin */
+}
+.btn-modal-ok { /* Extends .btn */
+    background-color: #FFFF00; /* Energetic yellow */
+    color: #222; /* Darker text */
+    padding: 14px 35px; /* Adjusted padding */
+    font-size: 1.05em; /* Slightly larger */
+}
+.btn-modal-ok:hover {
+    background-color: #e6e600; /* Darker yellow */
+}
+
+/* 10. Admin Panel General Styles (Applied via .admin-body and specific admin classes) */
+/* .admin-body defined in Global Styles */
+
+/* 11. Admin Login Page */
+.admin-login-container .form-box { /* Extends .form-box */
+    max-width: 450px;
+    margin-top: 50px; /* Give some space from top */
+}
+.admin-login-container .form-box h2 { /* Overrides .form-box h2 */
+    font-size: 1.8em;
+    color: #004080; /* Darker blue for admin panel */
+    margin-bottom: 25px;
+    font-weight: 700; /* Montserrat Bold */
+}
+.admin-login-container .form-box h2 .fas {
+    margin-right: 10px;
+}
+.admin-login-btn { /* Extends .btn */
+    background-color: #0052D4; /* Primary blue */
+    color: white;
+    font-weight: 700; /* Montserrat Bold */
+    width: 100%; /* Full width for form submit */
+}
+.admin-login-btn:hover {
+    background-color: #004080; /* Darker primary blue */
+}
+
+/* 12. Admin Dashboard Layout */
+.admin-sidebar {
+    width: 260px;
+    background-color: #2c3e50; /* Dark slate blue */
+    color: white;
+    min-height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 3px 0 8px rgba(0,0,0,0.12); /* Softer shadow */
+    transition: width 0.3s ease;
+}
+.admin-sidebar-header {
+    padding: 0 20px 20px 20px;
+    text-align: center;
+    border-bottom: 1px solid #34495e;
+}
+.admin-sidebar-header h3 {
+    font-size: 1.7em; /* Larger */
+    margin: 0;
+    font-weight: 700; /* Montserrat Bold */
+}
+.admin-sidebar-header h3 .fas {
+    margin-right: 10px;
+}
+.admin-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+.admin-nav-links li a {
+    display: block;
+    padding: 17px 22px; /* More padding */
+    color: #ced4da; /* Lighter grey */
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, padding-left 0.2s ease;
+    border-left: 4px solid transparent; /* For active indicator */
+    font-weight: 700; /* Montserrat Bold for nav links */
+}
+.admin-nav-links li a .fas {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+.admin-nav-links li a:hover {
+    background-color: #34495e;
+    color: white;
+    padding-left: 27px; /* Indent on hover */
+}
+.admin-nav-links li a:hover .fas {
+    transform: scale(1.1); /* Icon zoom on hover */
+}
+.admin-nav-links li a.active {
+    background-color: #0052D4; /* Consistent primary blue */
+    color: white;
+    border-left: 4px solid #00FF00; /* Brighter neon green */
+}
+.admin-nav-links li a.logout { /* Extends .admin-nav-links li a */
+    border-left-color: transparent; /* No special border for logout */
+}
+.admin-nav-links li a.logout:hover {
+    background-color: #c0392b; /* More vibrant red for logout hover */
+    color: white;
+    padding-left: 22px; /* Reset indent */
+}
+.admin-nav-links li a.logout:hover .fas {
+    transform: scale(1); /* Reset icon transform for logout */
+}
+.admin-main-content {
+    margin-left: 260px;
+    padding: 30px;
+    width: calc(100% - 260px);
+    background-color: #f8f9fc; /* Lighter content area */
+    transition: margin-left 0.3s ease;
+}
+.admin-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dfe3e8;
+    margin-bottom: 30px;
+}
+.admin-header h1 {
+    font-size: 2.5em; /* Larger */
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-weight: 700; /* Montserrat Bold */
+}
+.admin-header p {
+    font-size: 1.1em;
+    color: #525f6f;
+}
+.admin-section {
+    background-color: white;
+    padding: 35px; /* More padding */
+    border-radius: 10px; /* Consistent rounding */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07); /* Softer shadow */
+    margin-bottom: 30px;
+    display: none; /* Hidden by default, shown by JS */
+    animation: fadeInSection 0.4s ease-in-out; /* Fade in animation */
+}
+@keyframes fadeInSection {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.admin-section.active-section {
+    display: block;
+}
+.admin-section h2 {
+    font-size: 2em; /* Larger */
+    color: #0052D4;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #0052D4; /* Thinner but primary color border */
+    padding-bottom: 12px;
+    font-weight: 700; /* Montserrat Bold */
+}
+
+/* 13. Admin Components (Tables, Forms, Action Buttons) */
+.table-responsive {
+    overflow-x: auto;
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+.admin-table th, .admin-table td {
+    border: 1px solid #e1e6ef;
+    padding: 15px 20px; /* More padding */
+    text-align: left;
+    vertical-align: middle;
+}
+.admin-table thead th {
+    background-color: #e9ecef; /* Standard light grey */
+    color: #2c3e50;
+    font-weight: 700; /* Montserrat Bold */
+    text-transform: uppercase;
+    letter-spacing: 0.8px; /* More spacing */
+    font-size: 0.9em; /* Slightly smaller header text */
+}
+.admin-table tbody tr:nth-child(even) {
+    background-color: #f8f9fc;
+}
+.admin-table tbody tr:hover {
+    background-color: #eef2f7;
+}
+.btn-action { /* Extends .btn but with specific admin colors/sizing */
+    padding: 9px 14px; /* More padding */
+    margin-right: 6px;
+    margin-bottom: 6px; /* For stacking on mobile */
+    border-radius: 5px; /* Standard rounding */
+    font-size: 0.9em;
+    text-transform: none; /* Override .btn uppercase if desired for admin actions */
+    letter-spacing: normal; /* Override .btn letter-spacing */
+}
+.btn-action .fas {
+    margin-right: 5px;
+}
+.btn-action.view { background-color: #17a2b8; color: white; }
+.btn-action.edit { background-color: #f39c12; color: white; } /* Orange-yellow, white text */
+.btn-action.ban, .btn-action.delete, .btn-action.reject { background-color: #e74c3c; color: white; }
+.btn-action.approve { background-color: #2ecc71; color: white; }
+.btn-action:hover { /* Already inherits from .btn */
+    opacity: 0.85; /* Can add specific admin hover opacity */
+}
+.btn-action:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.status-dropdown {
+    padding: 9px 14px; /* More padding */
+    border-radius: 5px; /* Standard rounding */
+    border: 1px solid #ced4da;
+    background-color: white;
+    font-size: 0.9em;
+    font-weight: 700; /* Montserrat Bold */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.status-dropdown:focus {
+    border-color: #0052D4;
+    box-shadow: 0 0 0 0.2rem rgba(0, 82, 212, 0.25);
+    outline: none;
+}
+.status-dropdown.pending { border-left: 4px solid #f39c12; }
+.status-dropdown.approved { border-left: 4px solid #2ecc71; }
+.status-dropdown.rejected { border-left: 4px solid #e74c3c; }
+/* Task Management Form */
+.task-form-container, .existing-tasks-container {
+    margin-bottom: 30px;
+}
+.task-form-container h3, .existing-tasks-container h3 {
+    font-size: 1.6em; /* Larger */
+    color: #34495e;
+    margin-bottom: 20px;
+    font-weight: 700; /* Montserrat Bold */
+}
+.admin-form .input-group { /* Reuses .input-group from user forms but within .admin-form */
+    margin-bottom: 18px;
+}
+.admin-form .input-group label { /* Reuses .input-group label */
+    font-weight: 700; /* Montserrat Bold for labels */
+    color: #34495e;
+    font-size: 0.95em;
+}
+.admin-form .input-group input,
+.admin-form .input-group select,
+.admin-form .input-group textarea { /* Reuses .input-group input */
+    padding: 13px; /* More padding */
+    font-size: 1em;
+    border-radius: 5px; /* Standard rounding */
+    border: 1px solid #bdc3c7;
+}
+.admin-form .input-group input:focus, /* Reuses focus styles */
+.admin-form .input-group select:focus,
+.admin-form .input-group textarea:focus {
+    border-color: #0052D4;
+    box-shadow: 0 0 0 0.2rem rgba(0, 82, 212, 0.25);
+    outline: none;
+}
+.add-task-btn { /* Extends .btn */
+    background-color: #007bff; /* Standard blue for add */
+    color: white;
+    padding: 13px 28px; /* More padding */
+}
+.add-task-btn:hover {
+    background-color: #005ec4; /* Darker blue */
+}
+
+/* 14. Utility Classes */
+.text-center { text-align: center; }
+.hidden { display: none; }
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* 15. Responsive Adjustments */
+/* Hero Section Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.6em; }
+    .hero-content p { font-size: 1.1em; max-width: 90%; }
+    .cta-buttons .btn { padding: 14px 28px; font-size: 0.95em; display: block; margin: 12px auto; width: 70%; max-width: 300px; }
+}
+@media (max-width: 480px) {
+    .hero { padding: 60px 15px; }
+    .hero-content h1 { font-size: 2.2em; }
+    .hero-content p { font-size: 1em; }
+    .cta-buttons .btn { width: 85%; }
+}
+/* Forms Responsive */
+@media (max-width: 768px) {
+    .form-box { padding: 30px 35px; }
+    .form-box h2 { font-size: 2em; }
+}
+@media (max-width: 480px) {
+    .form-box { margin: 0 15px; padding: 25px 20px; }
+    .form-box h2 { font-size: 1.8em; }
+    .input-group input { padding: 12px 12px 12px 45px; } /* Adjust if icon position changes */
+    .input-group label { font-size: 0.9em; }
+    .btn-submit { font-size: 1em; }
+}
+/* Navbar Responsive */
+@media (max-width: 992px) { /* Tablet */
+    .navbar { padding: 15px 25px; }
+    .navbar-brand { font-size: 1.8em; }
+    .navbar-links a { margin-left: 15px; font-size: 1em; }
+}
+@media (max-width: 768px) { /* Large Mobile / Small Tablet */
+    .navbar { flex-direction: column; padding: 15px; }
+    .navbar-brand { margin-bottom: 15px; }
+    .navbar-links { width: 100%; display: flex; justify-content: space-around; flex-wrap: wrap; }
+    .navbar-links a { margin: 5px; font-size: 0.95em; }
+}
+/* Dashboard & Content Containers Responsive */
+@media (max-width: 992px) {
+    .dashboard-header h1, .ad-watch-header h1 { font-size: 2.4em; }
+    .dashboard-section h2 { font-size: 1.8em; }
+}
+@media (max-width: 768px) {
+    .dashboard-container, .ad-watch-container, .withdrawal-container.form-container { padding: 25px; }
+    .dashboard-header h1, .ad-watch-header h1 { font-size: 2.2em; }
+    .dashboard-section h2 { font-size: 1.7em; }
+    .task-list { grid-template-columns: 1fr; }
+    .btn-watch { width: 100%; max-width: 280px; }
+}
+@media (max-width: 480px) {
+    .dashboard-container, .ad-watch-container, .withdrawal-container.form-container { padding: 20px; }
+    .dashboard-header h1, .ad-watch-header h1 { font-size: 2em; }
+    .dashboard-section h2 { font-size: 1.6em; }
+    .task-info h3 { font-size: 1.3em; }
+    .task-info p { font-size: 0.95em; }
+    .wallet-info p { font-size: 1.1em; }
+    .points-display { font-size: 1.6em; }
+    .btn-withdraw { padding: 10px 22px; font-size: 0.95em; }
+}
+/* Ad Watch Page Responsive */
+@media (max-width: 768px) {
+    /* .ad-watch-header h1 already handled by .dashboard-header h1 */
+    .video-placeholder .fa-play-circle { font-size: 5em; }
+    .video-placeholder p { font-size: 1.1em; }
+    .timer-message { font-size: 1.1em; }
+    .btn-claim { padding: 14px 35px; font-size: 1.2em; }
+}
+@media (max-width: 480px) {
+    /* .ad-watch-header h1 already handled */
+    .video-placeholder .fa-play-circle { font-size: 4em; }
+    .timer-message { font-size: 1em; }
+    .btn-claim { padding: 12px 30px; font-size: 1.1em; width: 90%; max-width: 320px; }
+}
+/* Withdrawal Page Responsive */
+@media (max-width: 480px) {
+    .withdrawal-container .form-box { padding: 25px 20px; } /* Uses .form-box styles */
+    .info-message { font-size: 0.9em; padding: 12px; }
+}
+/* Modal Responsive */
+@media (max-width: 600px) {
+    .modal-content { padding: 30px; max-width: 90%; }
+    .vpn-modal-content h2 { font-size: 2em; }
+    .vpn-modal-content p { font-size: 1.05em; }
+    .btn-modal-ok { padding: 12px 30px; font-size: 1em; }
+}
+/* Admin Panel Responsive */
+@media (max-width: 992px) { /* Tablet */
+    .admin-sidebar { width: 100%; height: auto; position: static; min-height: auto; box-shadow: none; border-bottom: 3px solid #0052D4; }
+    .admin-main-content { margin-left: 0; width: 100%; }
+    .admin-nav-links { display: flex; flex-wrap: wrap; justify-content: space-around; }
+    .admin-nav-links li { flex-basis: 30%; flex-grow: 1; }
+    .admin-nav-links li a { text-align: center; padding-left: 20px; border-left: none; border-bottom: 4px solid transparent; }
+    .admin-nav-links li a.active { border-left: none; border-bottom: 4px solid #00FF00; }
+    .admin-nav-links li a:hover { padding-left: 20px; }
+}
+@media (max-width: 768px) { /* Mobile - Card View for Admin Tables */
+    .admin-header h1 { font-size: 1.9em; }
+    .admin-section h2 { font-size: 1.7em; }
+    .admin-nav-links li { flex-basis: 45%; }
+    .admin-table thead { display: none; }
+    .admin-table, .admin-table tbody, .admin-table tr, .admin-table td { display: block; width: 100%; }
+    .admin-table tr { margin-bottom: 18px; border: 1px solid #dfe3e8; border-radius: 10px; background-color: #fff; overflow: hidden; }
+    .admin-table td { text-align: right; padding-left: 45%; position: relative; border: none; border-bottom: 1px solid #f0f3f7; }
+    .admin-table td:last-child { border-bottom: none; }
+    .admin-table td::before { content: attr(data-label); position: absolute; left: 15px; width: calc(45% - 25px); padding-right: 10px; white-space: nowrap; text-align: left; font-weight: 700; color: #34495e; font-size: 0.9em; }
+    .admin-table td.actions-cell { padding-left: 15px; text-align: right; }
+    .admin-table td.actions-cell::before { content: "" !important; }
+    .btn-action { display: inline-block; margin: 3px; width: auto; font-size: 0.85em; padding: 8px 10px; }
+}
+@media (max-width: 480px) { /* Small Mobile Admin */
+    .admin-main-content { padding: 15px; }
+    .admin-section { padding: 20px; }
+    .admin-header h1 { font-size: 1.8em; }
+    .admin-section h2 { font-size: 1.6em; }
+    .admin-table td { padding: 12px 15px; font-size: 0.95em; }
+    .admin-table td::before { font-size: 0.85em; }
+    .admin-nav-links li { flex-basis: 100%; }
+}
+
+/* Final Font Sanity Check */
+body, input, textarea, select, button {
+    font-family: 'Montserrat', sans-serif;
+}
+.admin-body, .admin-body input, .admin-body textarea, .admin-body select, .admin-body button {
+    font-family: 'Montserrat', sans-serif; /* Ensuring admin also uses Montserrat */
+}
